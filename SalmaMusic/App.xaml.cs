@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalmaMusic.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace SalmaMusic
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            MainSiteModel mainSiteModel = new MainSiteModel();
+            mainSiteModel.GetWindow().Show();
+
+        }
     }
 }

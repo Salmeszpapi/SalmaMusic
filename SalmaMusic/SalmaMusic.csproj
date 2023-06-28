@@ -7,4 +7,36 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\play.png" />
+    <None Remove="folder.png" />
+    <None Remove="logo.png" />
+    <None Remove="previous.png" />
+    <None Remove="View\back.png" />
+    <None Remove="View\back2.png" />
+    <None Remove="View\music.png" />
+    <None Remove="View\next.png" />
+    <None Remove="View\play.png" />
+    <None Remove="View\play2.png" />
+    <None Remove="View\previous.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="19.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\play.png" />
+    <Resource Include="folder.png" />
+    <Resource Include="logo.png" />
+    <Resource Include="previous.png" />
+    <Resource Include="View\back.png" />
+    <Resource Include="View\back2.png" />
+    <Resource Include="View\music.png" />
+    <Resource Include="View\next.png" />
+    <Resource Include="View\play.png" />
+    <Resource Include="View\play2.png" />
+    <Resource Include="View\previous.png" />
+  </ItemGroup>
+
 </Project>

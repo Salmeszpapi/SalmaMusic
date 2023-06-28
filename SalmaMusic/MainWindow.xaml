@@ -6,7 +6,51 @@
         xmlns:local="clr-namespace:SalmaMusic"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <!-- First screenshot -->
     <Grid>
+        <!-- Using default column and row configurations -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Image  Source="/logo.png" Stretch="Fill"/>
+        </StackPanel>
+        <StackPanel Name="SlideMenu" Grid.Column="0" Grid.Row="1">
+            <Label>menu content</Label>
+            <Label HorizontalAlignment="Center">asdasd</Label>
+        </StackPanel>
+        <StackPanel Name="PlayerField" Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Bottom">
+            <StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,-5" >
+                <Image Height="25" Width="25" Source="/previous.png" Stretch="Fill"/>
+                <Image Height="30" Width="30" Source="/previous.png" Stretch="Fill" Margin="10,0,10,5"/>
+                <Image Height="25" Width="25" Source="/previous.png" Stretch="Fill"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+                <Label HorizontalAlignment="Center">0:12/3:17</Label>
+                <Label Margin="0,-5,0,-2" >Music tittle circling around</Label>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Image Height="40" Width="40" MouseDown="Image_MouseDown" Source="/folder.png" Stretch="Fill" Margin="10"></Image>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <UserControl Name="MusicContainer"/>
+            
+        </StackPanel >
 
     </Grid>
+
+    <!-- 2nd screenshot uses ColumnSpan and RowSpan -->
+
 </Window>
