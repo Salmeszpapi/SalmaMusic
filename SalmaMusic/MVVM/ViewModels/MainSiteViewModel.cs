@@ -18,13 +18,15 @@ using NAudio.Wave;
 using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using SalmaMusic.MVVM.Models;
 
-namespace SalmaMusic.ViewModel
+namespace SalmaMusic.MVVM.ViewModels
 {
     public class MainSiteViewModel : INotifyPropertyChanged
     {
         public static event EventHandler<MusicContainerEventHandler> menuButtonEventClicked;
-        public UserControl MusicContainer { get; set; }
+        private UserControl _MusicContainer;
+
         private string _musicTimer = "1:15/3:18";
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -56,7 +58,7 @@ namespace SalmaMusic.ViewModel
             var imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\Images\\play.png"));
             BackgroundBrush = imageBrush;
-            m_mediaPlayer =  new MediaPlayer();
+            m_mediaPlayer = new MediaPlayer();
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1000);  // Update the displayed time every 500 milliseconds
@@ -65,20 +67,22 @@ namespace SalmaMusic.ViewModel
 
         private void SwitchToExploreContent()
         {
-            MusicContentModel musicContent = (MusicContentModel)WorkFlowManager.GetUsercontrol(nameof(MusicContentModel));
-            if (musicContent is not null)
+            ExploreModel exploreContent = (ExploreModel)WorkFlowManager.GetUsercontrol(nameof(ExploreModel));
+            if (exploreContent is null)
             {
-                MusicContainer = musicContent.GetView();
+                exploreContent = new ExploreModel();
             }
+            MusicContainer = exploreContent.GetView();
         }
 
         private void SwitchToMusicContentPage()
         {
             MusicContentModel musicContent = (MusicContentModel)WorkFlowManager.GetUsercontrol(nameof(MusicContentModel));
-            if (musicContent is not null)
+            if (musicContent is null)
             {
-                MusicContainer = musicContent.GetView();
+                musicContent = new MusicContentModel();
             }
+            MusicContainer = musicContent.GetView();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -102,11 +106,25 @@ namespace SalmaMusic.ViewModel
             }
         }
 
+        public UserControl MusicContainer
+        {
+            get
+            {
+                return _MusicContainer;
+            }
+            set
+            {
+                _MusicContainer = value;
+                OnPropertyChanged(nameof(MusicContainer));
+            }
+        }
+
 
         public string MusicName
         {
             get { return _MusicButton; }
-            set { 
+            set
+            {
                 _MusicButton = value;
                 OnPropertyChanged(nameof(MusicName));
             }
@@ -115,7 +133,8 @@ namespace SalmaMusic.ViewModel
         public string MusicTimer
         {
             get { return _musicTimer; }
-            set {
+            set
+            {
                 _musicTimer = value;
                 OnPropertyChanged(nameof(MusicTimer));
             }
@@ -141,7 +160,7 @@ namespace SalmaMusic.ViewModel
 
         private void StartMusicButtonClicked()
         {
-            if(CurrentMusicPath is null)
+            if (CurrentMusicPath is null)
             {
                 return;
             }

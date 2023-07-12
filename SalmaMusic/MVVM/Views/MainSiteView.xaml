@@ -9,10 +9,10 @@
         Title="MainSiteView" Height="450" Width="800">
 
     <Window.Resources>
-        <ImageBrush x:Key="BackImageBrush" ImageSource="../Assets/Images/back2.png" />
-        <ImageBrush x:Key="PlayImageBrush" ImageSource="../Assets/Images/play.png" />
-        <ImageBrush x:Key="NextImageBrush" ImageSource="../Assets/Images/next.png" />
-        <ImageBrush x:Key="FolderImageBrush" ImageSource="../Assets/Images/folder.png" />
+        <ImageBrush x:Key="BackImageBrush" ImageSource="../../Assets/Images/back2.png" />
+        <ImageBrush x:Key="PlayImageBrush" ImageSource="../../Assets/Images/play.png" />
+        <ImageBrush x:Key="NextImageBrush" ImageSource="../../Assets/Images/next.png" />
+        <ImageBrush x:Key="FolderImageBrush" ImageSource="../../Assets/Images/folder.png" />
         
         <Style x:Key="CustomPlayButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource PlayImageBrush}" />
@@ -141,7 +141,7 @@
                     <GradientStop Color="#FF2DC179" Offset="0.737"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <UserControl Name="MusicContainer" Content="{Binding MusicContainer}" />
+            <UserControl Name="MusicContainer" Background="Transparent" Content="{Binding MusicContainer}" />
         </StackPanel >
     </Grid>
 </Window>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="SalmaMusic.View.ExploreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalmaMusic.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Label>Explore</Label>
+        <Button Content="asd" Height="23" HorizontalAlignment="Left" Margin="10,5,0,0" Name="MyBack" VerticalAlignment="Top" Width="40" ToolTip="Backword" />
+        <WebBrowser Height="445" HorizontalAlignment="Left" Margin="10,33,0,0" Name="MyWebBrowser" VerticalAlignment="Top" Width="687" />
+        <TextBox Height="23" Margin="103,5,12,0" Name="MyTextBox" VerticalAlignment="Top" />
+        <Button Content="|>" Height="23" HorizontalAlignment="Left" Margin="41,5,0,0" Name="MyGo" VerticalAlignment="Top" Width="25" ToolTip="Go" />
+        <Button Content=">>" Height="23" HorizontalAlignment="Right" Margin="0,5,612,0" Name="MyForward" VerticalAlignment="Top" Width="25" ToolTip="Forward"/>
+
+    </Grid>
+</UserControl>
