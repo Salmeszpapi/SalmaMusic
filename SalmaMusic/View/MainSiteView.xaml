@@ -7,6 +7,76 @@
         mc:Ignorable="d"
         
         Title="MainSiteView" Height="450" Width="800">
+
+    <Window.Resources>
+        <ImageBrush x:Key="BackImageBrush" ImageSource="../Assets/Images/back2.png" />
+        <ImageBrush x:Key="PlayImageBrush" ImageSource="../Assets/Images/play.png" />
+        <ImageBrush x:Key="NextImageBrush" ImageSource="../Assets/Images/next.png" />
+        <ImageBrush x:Key="FolderImageBrush" ImageSource="../Assets/Images/folder.png" />
+        
+        <Style x:Key="CustomPlayButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PlayImageBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="CustomBackButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource BackImageBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CustomNextButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource NextImageBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CustomFolderButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource FolderImageBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,6 +97,7 @@
             <RowDefinition Height="80"/>
             <RowDefinition />
         </Grid.RowDefinitions>
+
         <StackPanel Grid.Column="0" Grid.Row="0">
             <Image  Source="/logo.png" Stretch="Fill"/>
         </StackPanel>
@@ -37,16 +108,17 @@
                     <GradientStop Color="#FF9BE899" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button Margin="5" Content="Favorites" BorderBrush="Brown" BorderThickness="0" 
+            <Button Command="{Binding FavouritesContentPage}" Margin="5" Content="Favorites" BorderBrush="Brown" BorderThickness="0" 
                     Background="Transparent" FontSize="22" FontWeight="bold"/>
-            <Button Margin="5" Content="Explore" BorderBrush="Brown" BorderThickness="0" 
+            <Button Command="{Binding ExploreContentPage}" Margin="5" Content="Explore" BorderBrush="Brown" BorderThickness="0" 
                     Background="Transparent" FontSize="22" FontWeight="bold"/>
         </StackPanel>
         <StackPanel Name="PlayerField" Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="0,20,0,0" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,-5" >
-                <Image Height="30" Width="25" Source="/View/back2.png" RenderTransformOrigin=".5,.5" Stretch="Fill"/>
-                <Image Name="musicPlayer" Height="30" Width="30" MouseDown="PlayMusic" Source="/View/play.png" Stretch="Fill" Margin="10,0,10,0"/>
-                <Image Height="30" Width="25" Source="/View/next.png" Stretch="Fill"/>
+                <Button x:Name="musicBack" Width="30" Height="30" Style="{StaticResource CustomBackButtonStyle}" Command="{Binding MyBackMusicButtonIsPressed}" BorderThickness="0" />
+                <Button x:Name="musicPlayer" Background="{Binding BackgroundBrush}" Margin="5,0,5,0" Width="35" Height="35" Style="{StaticResource CustomPlayButtonStyle}" Command="{Binding MyStartMusicButtonIsPressed}" BorderThickness="0" />
+                <Button x:Name="musicSkipp" Width="30" Height="30" Style="{StaticResource CustomNextButtonStyle}" Command="{Binding MySkippMusicButtonIsPressed}" BorderThickness="0" />
+                <!--<Image Height="30" Width="25" Source="/View/next.png" Stretch="Fill"/>-->
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
                 <Label FontSize="15" FontStyle="Italic" HorizontalAlignment="Center" Content="{Binding MusicTimer}"></Label>
@@ -54,10 +126,11 @@
 
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Margin="0,-5,0,-2" FontSize="22" >Music tittle circling around</Label>
+            <Label Margin="0,-5,0,-2" FontSize="22" Content="{Binding MusicName}"></Label>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Image Height="40" Width="40" MouseDown="Image_MouseDown_1" Source="/folder.png" Stretch="Fill" Margin="10"></Image>
+        <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="FolderButton" Width="40" Height="40" Style="{StaticResource CustomFolderButtonStyle}" Command="{Binding MyFolderButtonIsPressed}" BorderThickness="0" />
+            <Image Height="40" Width="40" MouseDown="Image_MouseDown_1" Source="/View/gear.png" Stretch="Fill" Margin="10"></Image>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">

@@ -1,5 +1,4 @@
-﻿using SalmaMusic.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace SalmaMusic.View
 {
     /// <summary>
-    /// Interaction logic for MusicContentView.xaml
+    /// Interaction logic for ExploreView.xaml
     /// </summary>
-    public partial class MusicContentView : UserControl
+    public partial class ExploreView : UserControl
     {
-        public MusicContentView()
+        public ExploreView()
         {
             InitializeComponent();
-        }
-
-        private void MusicContentViewModel_MusicChanged(object? sender, EventArgs e)
-        {
-            
         }
     }
 }

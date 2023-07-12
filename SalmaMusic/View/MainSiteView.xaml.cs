@@ -16,6 +16,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System;
+using System.Reflection;
+using System.Resources;
+using NAudio.Wave;
+using SalmaMusic.ViewModel;
 
 namespace SalmaMusic.View
 {
@@ -24,67 +29,85 @@ namespace SalmaMusic.View
     /// </summary>
     public partial class MainSiteView : Window
     {
-        public static event EventHandler<MusicContainerEventHandler> menuButtonEventClicked;
         private bool musicCurrentStatus = false;
         private MediaPlayer m_mediaPlayer;
+        public BitmapImage BackButton;
+        public string MusicName { get; set; }
+        public string MusicTimer { get; set; }
+        private string CurrentMusicPath { get; set; }
+
         public MainSiteView()
         {
             InitializeComponent();
         }
+
+
+        private void changeMusicEventHandling(object? sender, Music e)
+        {
+            CurrentMusicPath = "D:\\musics\\" + e.Name;
+            MusicName = e.Name;
+            Stop();
+            Play(CurrentMusicPath);
+        }
+
+
         private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             List<Music> songList = new List<Music>();
-            OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true };
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true, Filter = "Audio WAV/Mp3 Files (*.wav;*.mp3)|*.wav;*.mp3" };
             openFileDialog.ShowDialog(this);
             MusicContentModel musicContentModel = new MusicContentModel();
             WorkFlowManager.SaveUsercontrol(musicContentModel);
             MusicContainer = musicContentModel.GetView();
 
 
+
             foreach (var file in openFileDialog.FileNames)
             {
-                Music newMusic = new Music("Test", file);
+                var finalFile = FormatChecker(file);
+                Music newMusic = new Music(finalFile.Split("\\").Last(), finalFile);
                 songList.Add(newMusic);
             }
-            menuButtonEventClicked?.Invoke(this, new MusicContainerEventHandler() { musics = songList });
+            var disctinctMusics = new List<Music>();
+            var namesSet = new HashSet<string>();
 
-        }
+            foreach (var musics in songList)
+            {
+                if (namesSet.Add(musics.Name))
+                {
+                    disctinctMusics.Add(musics);
+                }
+            }
 
-        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var test = WorkFlowManager.GetUsercontrol("MusicContentModel");
-           
+            songList = disctinctMusics;
+            //var clearedList = songList.Select(x=>x.Name.Distinct());
+            //menuButtonEventClicked?.Invoke(this, new MusicContainerEventHandler() { musics = songList.ToList() });
         }
 
         private void PlayMusic(object sender, MouseButtonEventArgs e)
         {
-            
-            var sri = "D:/musics/punanny.wav";
-            var asd = new Uri("D:/musics/punanny.wav");
-            //if (musicPlayer.PersistId == 1)
-            //{
-            //    musicPlayer.Name = "playing";
-            //}
-            var a = (ImageSource)Resources["Project"];
+
+            if(CurrentMusicPath == null)
+            {
+                //error no music loaded 
+                Show();
+                return;
+            }
+
             if (!musicCurrentStatus)
             {
-                musicPlayer.Source = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\pause.png");
+                musicPlayer.Background = (Brush)new ImageSourceConverter().ConvertFromString("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\Images\\pause.png");
                 musicCurrentStatus = true;
-                Play(sri);
+                Play(CurrentMusicPath);
             }
             else
             {
-                musicPlayer.Source = (ImageSource)new ImageSourceConverter().ConvertFromString("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\play.png");
+                musicPlayer.Background = (Brush)new ImageSourceConverter().ConvertFromString("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\Images\\play.png");
                 musicCurrentStatus = false;
                 Stop();
-
             }
-
             var test = m_mediaPlayer.Position;
-
-
         }
-
 
         private void Play(string filename)
         {
@@ -93,9 +116,17 @@ namespace SalmaMusic.View
             m_mediaPlayer.Play();
 
         }
+
         private void Stop()
         {
-            m_mediaPlayer.Pause();
+            try
+            {
+
+            }catch (Exception ex)
+            {
+                m_mediaPlayer.Pause();
+            }
+
         }
 
         // `volume` is assumed to be between 0 and 100.
@@ -103,6 +134,34 @@ namespace SalmaMusic.View
         {
             // MediaPlayer volume is a float value between 0 and 1.
             m_mediaPlayer.Volume = volume / 100.0f;
+        }
+        private string FormatChecker(string music)
+        {
+            if (!music.Contains(".mp3"))
+            {
+                return music;
+            }
+            //transform the path tring
+            var newPathString = music.Split('.')[0] + ".wav";
+            using (Mp3FileReader mp3Reader = new Mp3FileReader(music))
+            {
+                // Create a WaveFileWriter to write the WAV file
+                using (WaveFileWriter wavWriter = new WaveFileWriter(newPathString, mp3Reader.WaveFormat))
+                {
+                    // Convert and write each frame from MP3 to WAV
+                    byte[] buffer = new byte[mp3Reader.WaveFormat.AverageBytesPerSecond];
+                    int bytesRead;
+                    do
+                    {
+                        bytesRead = mp3Reader.Read(buffer, 0, buffer.Length);
+                        wavWriter.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
+
+                    // Finalize the WAV file
+                    wavWriter.Flush();
+                }
+            }
+            return newPathString;
         }
     }
 }

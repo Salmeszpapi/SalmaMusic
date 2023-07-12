@@ -14,23 +14,35 @@ namespace SalmaMusic.ViewModel
 {
     public class MusicContentViewModel
     {
-        private List<string> _localList = new List<string>();
-        private ObservableCollection<string> _Music = new ObservableCollection<string>();
-        public ObservableCollection<string> Items
+        private ObservableCollection<Music> _Music = new ObservableCollection<Music>();
+        public static event EventHandler<Music> MusicChanged;
+        private Music _SelectedItem { get;set; }
+        public Music SelectedItem {
+            get { return _SelectedItem; }
+            set 
+            {
+                _SelectedItem = value;
+                ChangedSelectedItem(value);
+            }
+        }
+        public ObservableCollection<Music> Items
         {
             get { return _Music; }
             set { _Music = value; }
         }
-        public string? TestText => "My first test text in Music content user content, then why the heell the list binding is not working huh ....";
 
 
         public MusicContentViewModel()
         {
-            MainSiteView.menuButtonEventClicked += MusicLoader;
+            MainSiteViewModel.menuButtonEventClicked += MusicLoader;
         }
         private async void MusicLoader(object sender, MusicContainerEventHandler e)
         { 
-            Items.Add(new ObservableCollection<string>(e.musics.Select(x => x.Name).ToList()));
+            Items.Add(e.musics.ToList());
+        }
+        private void ChangedSelectedItem(Music music)
+        {
+            MusicChanged.Invoke(this, music);
         }
     }
 }

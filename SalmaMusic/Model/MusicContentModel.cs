@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace SalmaMusic.Model
 {
-    internal class MusicContentModel : BaseModel
+    public class MusicContentModel : BaseModel
     {
         private MusicContentView musicContentView;
         private MusicContentViewModel musicContentViewModel;
@@ -18,6 +18,7 @@ namespace SalmaMusic.Model
         {
             musicContentViewModel = new MusicContentViewModel();
             musicContentView = new MusicContentView() { DataContext = musicContentViewModel };
+            WorkFlowManager.SaveUsercontrol(this);
         }
         public UserControl GetView()
         {

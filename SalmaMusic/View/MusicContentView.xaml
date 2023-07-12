@@ -6,34 +6,67 @@
              xmlns:local="clr-namespace:SalmaMusic.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="10">
-        <ListBox Margin="20" ItemsSource="{Binding Items}" Background="Transparent" BorderThickness="0">
+
+    <UserControl.Resources>
+        
+        <Style TargetType="ListBoxItem">
+
+            <Style.Resources>
+                <!-- Define the colors for selected and unselected items -->
+                <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Green" />
+                <SolidColorBrush x:Key="TransparentColor" Color="#20055000" />
+                <SolidColorBrush x:Key="UnselectedBackgroundBrush" Color="Brown" />
+            </Style.Resources>
+            <Setter Property="Background" Value="{StaticResource UnselectedBackgroundBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource TransparentColor}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Green"></Setter>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <ListBox x:Name="myListBox" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListBox.Resources>
+                <Style TargetType="ListBox">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" Height="300" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/View/music.png" Width="50" Height="50" />
-                            <TextBlock Grid.Column="1" Text="{Binding}" />
-                        </StackPanel>
-                    </Grid>
+                    <StackPanel>
+                        <!-- Define your item layout here -->
+                        <Image Source="/View/music.png" Width="50" Height="50" />
+                        <TextBlock Text="{Binding Name}" Margin="5" />
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="{Binding TestText}"/>
-        <!--<ListBox x:Name="listboxFolder1" Grid.Row="1" BorderThickness="0" 
-            ItemsSource="{Binding}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
     </Grid>
 </UserControl>
