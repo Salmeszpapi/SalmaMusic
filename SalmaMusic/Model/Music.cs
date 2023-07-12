@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SalmaMusic.Model
 {
-    public class Music
+    public class Music : EventArgs
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
+
 
 
         public Music(string name,string path)
@@ -18,6 +19,10 @@ namespace SalmaMusic.Model
             this.Name = name;
             this.Path = path;
         }
+        public Music(string name) 
+        {
+            this.Name = name;
+        }  
 
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace SalmaMusic.Model
 {
-    internal class MainSiteModel
+    internal class MainSiteModel : BaseModel
     {
         private MainSiteViewModel MainSiteViewModel;
         private MainSiteView mainSiteView;
@@ -18,6 +18,7 @@ namespace SalmaMusic.Model
         {
             MainSiteViewModel = new MainSiteViewModel();
             mainSiteView = new MainSiteView() { DataContext = MainSiteViewModel};
+            WorkFlowManager.SaveUsercontrol(this);
         }
         public Window GetWindow() 
         {

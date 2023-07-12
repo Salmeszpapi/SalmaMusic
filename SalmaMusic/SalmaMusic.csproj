@@ -8,12 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\back2.png" />
+    <None Remove="Assets\Images\folder.png" />
+    <None Remove="Assets\Images\gear.png" />
+    <None Remove="Assets\Images\logo.png" />
+    <None Remove="Assets\Images\music.png" />
+    <None Remove="Assets\Images\next.png" />
+    <None Remove="Assets\Images\pause.png" />
+    <None Remove="Assets\Images\previous.png" />
     <None Remove="Assets\play.png" />
     <None Remove="folder.png" />
     <None Remove="logo.png" />
     <None Remove="previous.png" />
     <None Remove="View\back.png" />
     <None Remove="View\back2.png" />
+    <None Remove="View\gear.png" />
     <None Remove="View\music.png" />
     <None Remove="View\next.png" />
     <None Remove="View\play.png" />
@@ -22,21 +31,50 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReactiveUI" Version="19.2.1" />
+    <Resource Include="Assets\Images\previous.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\play.png" />
+    <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="ReactiveUI" Version="19.2.1" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\back2.png" />
+    <Resource Include="Assets\Images\folder.png" />
+    <Resource Include="Assets\Images\gear.png" />
+    <Resource Include="Assets\Images\logo.png" />
+    <Resource Include="Assets\Images\music.png" />
+    <Resource Include="Assets\Images\next.png" />
+    <Resource Include="Assets\Images\pause.png" />
+    <Resource Include="Assets\Images\play.png" />
     <Resource Include="folder.png" />
     <Resource Include="logo.png" />
     <Resource Include="previous.png" />
     <Resource Include="View\back.png" />
     <Resource Include="View\back2.png" />
+    <Resource Include="View\gear.png" />
     <Resource Include="View\music.png" />
     <Resource Include="View\next.png" />
     <Resource Include="View\play.png" />
     <Resource Include="View\play2.png" />
     <Resource Include="View\previous.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Assets\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Assets\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
