@@ -18,7 +18,7 @@ namespace SalmaMusic.MVVM.Models
         public MainSiteModel()
         {
             MainSiteViewModel = new MainSiteViewModel();
-            mainSiteView = new MainSiteView() { DataContext = MainSiteViewModel };
+            mainSiteView = new MainSiteView() { DataContext = MainSiteViewModel};
             WorkFlowManager.SaveUsercontrol(this);
         }
         public Window GetWindow()

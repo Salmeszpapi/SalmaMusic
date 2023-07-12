@@ -1,5 +1,4 @@
-﻿using SalmaMusic.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalmaMusic.MVVM.Views
+namespace SalmaMusic.View
 {
     /// <summary>
-    /// Interaction logic for EditorView.xaml
+    /// Interaction logic for ExploreView.xaml
     /// </summary>
-    public partial class EditorView : UserControl
+    public partial class ExploreView : UserControl
     {
-        public EditorView()
+        public ExploreView()
         {
             InitializeComponent();
-        }
-
-        private void MusicContentViewModel_MusicChanged(object? sender, EventArgs e)
-        {
-            
         }
     }
 }
