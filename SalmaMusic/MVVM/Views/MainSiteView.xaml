@@ -13,8 +13,7 @@
         <ImageBrush x:Key="PlayImageBrush" ImageSource="../../Assets/Images/play.png" />
         <ImageBrush x:Key="NextImageBrush" ImageSource="../../Assets/Images/next.png" />
         <ImageBrush x:Key="FolderImageBrush" ImageSource="../../Assets/Images/folder.png" />
-        <ImageBrush x:Key="GearImageBrush" ImageSource="../../Assets/Images/Gear.png" />
-
+        
         <Style x:Key="CustomPlayButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource PlayImageBrush}" />
             <Setter Property="Template">
@@ -76,21 +75,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="CustomGearButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource GearImageBrush}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </Window.Resources>
 
     <Grid>
@@ -110,12 +94,12 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0">
-            <Image  Source="../../Assets/Images/logo.png" Stretch="Fill"/>
+            <Image  Source="/logo.png" Stretch="Fill"/>
         </StackPanel>
         <StackPanel Name="SlideMenu" Grid.Column="0" Grid.Row="1">
             <StackPanel.Background>
@@ -124,26 +108,20 @@
                     <GradientStop Color="#FF9BE899" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button Name="FavoritesMenuButton" Command="{Binding FavouritesContentPage}" Margin="5" Content="Favorites" BorderBrush="Brown" BorderThickness="0" 
-                    Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown_1"/>
-            <Button Name="ExploresMenuButton" Command="{Binding ExploreContentPage}" Margin="5" Content="Explore" BorderBrush="Brown" BorderThickness="0" 
-                     Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
-            <Button Name="EditorMenuButton" Command="{Binding EditorContentPage}" Margin="5" Content="Editor" BorderBrush="Brown" BorderThickness="0" 
-                     Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
-            <Button Name="VideoMenuButton" Command="{Binding VideoContentPage}" Margin="5" Content="Video" BorderBrush="Brown" BorderThickness="0" 
-                     Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
-            <Button Name="ToDoMenuButton" Command="{Binding ToDoContentPage}" Margin="5" Content="ToDo" BorderBrush="Brown" BorderThickness="0" 
-                     Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
+            <Button Command="{Binding FavouritesContentPage}" Margin="5" Content="Favorites" BorderBrush="Brown" BorderThickness="0" 
+                    Background="Transparent" FontSize="22" FontWeight="bold"/>
+            <Button Command="{Binding ExploreContentPage}" Margin="5" Content="Explore" BorderBrush="Brown" BorderThickness="0" 
+                    Background="Transparent" FontSize="22" FontWeight="bold"/>
         </StackPanel>
         <StackPanel Name="PlayerField" Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="0,20,0,0" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,-5" >
                 <Button x:Name="musicBack" Width="30" Height="30" Style="{StaticResource CustomBackButtonStyle}" Command="{Binding MyBackMusicButtonIsPressed}" BorderThickness="0" />
                 <Button x:Name="musicPlayer" Background="{Binding BackgroundBrush}" Margin="5,0,5,0" Width="35" Height="35" Style="{StaticResource CustomPlayButtonStyle}" Command="{Binding MyStartMusicButtonIsPressed}" BorderThickness="0" />
                 <Button x:Name="musicSkipp" Width="30" Height="30" Style="{StaticResource CustomNextButtonStyle}" Command="{Binding MySkippMusicButtonIsPressed}" BorderThickness="0" />
+                <!--<Image Height="30" Width="25" Source="/View/next.png" Stretch="Fill"/>-->
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
                 <Label FontSize="15" FontStyle="Italic" HorizontalAlignment="Center" Content="{Binding MusicTimer}"></Label>
-                <Slider x:Name="CustomSlider" Minimum="0" Value="{Binding CurrentPosition}" Maximum="{Binding TotalDuration}" Width="100"></Slider>
             </StackPanel>
 
         </StackPanel>
@@ -152,7 +130,7 @@
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
             <Button x:Name="FolderButton" Width="40" Height="40" Style="{StaticResource CustomFolderButtonStyle}" Command="{Binding MyFolderButtonIsPressed}" BorderThickness="0" />
-            <Button x:Name="GearButton" Margin="15,0,10,0" Width="40" Height="40" Style="{StaticResource CustomGearButtonStyle}" Command="{Binding GearButtonIsPressed}" BorderThickness="0"/>
+            <Image Height="40" Width="40" MouseDown="Image_MouseDown_1" Source="/View/gear.png" Stretch="Fill" Margin="10"></Image>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
@@ -165,10 +143,5 @@
             </StackPanel.Background>
             <UserControl Name="MusicContainer" Background="Transparent" Content="{Binding MusicContainer}" />
         </StackPanel >
-        <StackPanel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Slider VerticalAlignment="Bottom" Width="30" Height="150" Orientation="Vertical"
-                    Minimum="0" Maximum="1" TickFrequency="0.1" TickPlacement="TopLeft" BorderThickness="0"
-                    Value="{Binding MusicVolume}" />
-        </StackPanel>
     </Grid>
 </Window>

@@ -16,6 +16,7 @@
                 <SolidColorBrush x:Key="TransparentColor" Color="#20055000" />
                 <SolidColorBrush x:Key="UnselectedBackgroundBrush" Color="Brown" />
             </Style.Resources>
+            <Setter Property="Background" Value="{StaticResource UnselectedBackgroundBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
@@ -35,11 +36,8 @@
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="{StaticResource TransparentColor}" />
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="Foreground" Value="Green"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="Blue"/>
                     <Setter Property="Background" Value="Green"></Setter>
                 </Trigger>
             </Style.Triggers>
@@ -64,9 +62,8 @@
                 <DataTemplate>
                     <StackPanel>
                         <!-- Define your item layout here -->
-                        <Image Source="../../Assets/Images/Music.png" Width="50" Height="50" />
-
-                        <TextBlock Text="{Binding Name}" FontSize="14" Margin="5" />
+                        <Image Source="/View/music.png" Width="50" Height="50" />
+                        <TextBlock Text="{Binding Name}" Margin="5" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
