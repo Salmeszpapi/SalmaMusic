@@ -10,16 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalmaMusic.ViewModel
+namespace SalmaMusic.MVVM.ViewModels
 {
     public class MusicContentViewModel
     {
         private ObservableCollection<Music> _Music = new ObservableCollection<Music>();
         public static event EventHandler<Music> MusicChanged;
-        private Music _SelectedItem { get;set; }
-        public Music SelectedItem {
+        private Music _SelectedItem { get; set; }
+        public Music SelectedItem
+        {
             get { return _SelectedItem; }
-            set 
+            set
             {
                 _SelectedItem = value;
                 ChangedSelectedItem(value);
@@ -37,7 +38,7 @@ namespace SalmaMusic.ViewModel
             MainSiteViewModel.menuButtonEventClicked += MusicLoader;
         }
         private async void MusicLoader(object sender, MusicContainerEventHandler e)
-        { 
+        {
             Items.Add(e.musics.ToList());
         }
         private void ChangedSelectedItem(Music music)

@@ -1,5 +1,6 @@
-﻿using SalmaMusic.View;
-using SalmaMusic.ViewModel;
+﻿using SalmaMusic.Model;
+using SalmaMusic.MVVM.ViewModels;
+using SalmaMusic.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace SalmaMusic.Model
+namespace SalmaMusic.MVVM.Models
 {
     public class MusicContentModel : BaseModel
     {

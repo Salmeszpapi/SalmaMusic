@@ -1,5 +1,4 @@
-﻿using SalmaMusic.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +25,5 @@ namespace SalmaMusic.View
             InitializeComponent();
         }
 
-        private void MusicContentViewModel_MusicChanged(object? sender, EventArgs e)
-        {
-            
-        }
     }
 }

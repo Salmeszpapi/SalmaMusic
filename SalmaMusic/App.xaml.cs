@@ -1,4 +1,4 @@
-﻿using SalmaMusic.Model;
+﻿using SalmaMusic.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
