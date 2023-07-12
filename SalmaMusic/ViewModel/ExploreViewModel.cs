@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SalmaMusic.ViewModel
 {
-    internal class ExploreViewModel
+    public class ExploreViewModel
     {
+
     }
 }

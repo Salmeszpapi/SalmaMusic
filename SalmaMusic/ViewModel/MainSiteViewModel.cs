@@ -65,7 +65,11 @@ namespace SalmaMusic.ViewModel
 
         private void SwitchToExploreContent()
         {
-            throw new NotImplementedException();
+            MusicContentModel musicContent = (MusicContentModel)WorkFlowManager.GetUsercontrol(nameof(MusicContentModel));
+            if (musicContent is not null)
+            {
+                MusicContainer = musicContent.GetView();
+            }
         }
 
         private void SwitchToMusicContentPage()
