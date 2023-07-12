@@ -23,6 +23,8 @@ namespace SalmaMusic.View
         public ExploreView()
         {
             InitializeComponent();
+            MyWebBrowser.Source = new Uri("http://youtube.com");
         }
+
     }
 }

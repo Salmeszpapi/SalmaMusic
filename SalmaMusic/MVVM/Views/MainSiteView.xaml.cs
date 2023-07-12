@@ -20,7 +20,8 @@ using System;
 using System.Reflection;
 using System.Resources;
 using NAudio.Wave;
-using SalmaMusic.ViewModel;
+using SalmaMusic.MVVM.ViewModels;
+using SalmaMusic.MVVM.Models;
 
 namespace SalmaMusic.View
 {
@@ -59,8 +60,6 @@ namespace SalmaMusic.View
             MusicContentModel musicContentModel = new MusicContentModel();
             WorkFlowManager.SaveUsercontrol(musicContentModel);
             MusicContainer = musicContentModel.GetView();
-
-
 
             foreach (var file in openFileDialog.FileNames)
             {

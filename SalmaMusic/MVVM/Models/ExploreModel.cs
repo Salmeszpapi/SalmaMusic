@@ -1,12 +1,14 @@
-﻿using SalmaMusic.View;
-using SalmaMusic.ViewModel;
+﻿using SalmaMusic.Model;
+using SalmaMusic.MVVM.ViewModels;
+using SalmaMusic.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
-namespace SalmaMusic.Model
+namespace SalmaMusic.MVVM.Models
 {
     public class ExploreModel : BaseModel
     {
@@ -16,8 +18,12 @@ namespace SalmaMusic.Model
         public ExploreModel()
         {
             exploreViewModel = new ExploreViewModel();
-            exploreView = new ExploreView() { DataContext = exploreViewModel};
+            exploreView = new ExploreView() { DataContext = exploreViewModel };
             WorkFlowManager.SaveUsercontrol(this);
+        }
+        public UserControl GetView()
+        {
+            return exploreView;
         }
     }
 }

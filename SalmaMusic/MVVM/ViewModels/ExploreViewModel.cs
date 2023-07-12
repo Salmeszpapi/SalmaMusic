@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalmaMusic.ViewModel
+namespace SalmaMusic.MVVM.ViewModels
 {
     public class ExploreViewModel
     {
