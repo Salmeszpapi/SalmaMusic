@@ -25,5 +25,10 @@ namespace SalmaMusic.MVVM.Models
         {
             return mainSiteView;
         }
+        
+        public override UserControl GetView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

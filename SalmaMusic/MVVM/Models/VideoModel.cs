@@ -1,6 +1,6 @@
 ﻿using SalmaMusic.Model;
 using SalmaMusic.MVVM.ViewModels;
-using SalmaMusic.View;
+using SalmaMusic.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +10,20 @@ using System.Windows.Controls;
 
 namespace SalmaMusic.MVVM.Models
 {
-    public class ExploreModel : BaseModel
+    public class VideoModel : BaseModel
     {
-        private ExploreView exploreView;
-        private ExploreViewModel exploreViewModel;
-
-        public ExploreModel()
+        private VideoView VideoView;
+        private VideoViewModel VideoViewModel;
+        public VideoModel()
         {
-            exploreViewModel = new ExploreViewModel();
-            exploreView = new ExploreView() { DataContext = exploreViewModel };
+            VideoViewModel = new VideoViewModel();
+            VideoView = new VideoView() { DataContext = VideoViewModel};
             WorkFlowManager.SaveUsercontrol(this);
         }
+
         public override UserControl GetView()
         {
-            return exploreView;
+            return VideoView;
         }
     }
 }

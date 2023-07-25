@@ -21,9 +21,10 @@ namespace SalmaMusic.MVVM.Models
             musicContentView = new MusicContentView() { DataContext = musicContentViewModel };
             WorkFlowManager.SaveUsercontrol(this);
         }
-        public UserControl GetView()
+        public override UserControl GetView()
         {
             return musicContentView;
         }
+
     }
 }
