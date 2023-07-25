@@ -1,6 +1,4 @@
-﻿using SalmaMusic.Model;
-using SalmaMusic.MVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,13 +23,6 @@ namespace SalmaMusic.MVVM.Views
         public EditorView()
         {
             InitializeComponent();
-            MainSiteViewModel.MusicSkipped += ChangeSelectedMusicDesign;
         }
-
-        private void ChangeSelectedMusicDesign(object? sender, Music e)
-        {
-            myListBox.SelectedItem = e;
-        }
-
     }
 }

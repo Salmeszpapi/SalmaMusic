@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace SalmaMusic.Model
 {
+    [Table("Music")]
     public class Music : EventArgs
     {
         [Key]
@@ -18,17 +19,11 @@ namespace SalmaMusic.Model
         public string Name { get; set; }
         public string Path { get; set; }
 
-
-
         public Music(string name,string path)
         {
             this.Name = name;
             this.Path = path;
-        }
-        public Music(string name) 
-        {
-            this.Name = name;
-        }  
+        } 
 
     }
 }

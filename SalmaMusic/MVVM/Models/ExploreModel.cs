@@ -21,7 +21,7 @@ namespace SalmaMusic.MVVM.Models
             exploreView = new ExploreView() { DataContext = exploreViewModel };
             WorkFlowManager.SaveUsercontrol(this);
         }
-        public UserControl GetView()
+        public override UserControl GetView()
         {
             return exploreView;
         }

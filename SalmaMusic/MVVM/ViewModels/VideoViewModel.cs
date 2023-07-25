@@ -6,10 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using System.Windows.Media;
 
 namespace SalmaMusic.MVVM.ViewModels
 {
@@ -17,8 +15,6 @@ namespace SalmaMusic.MVVM.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private DispatcherTimer _timer;
-        public List<ColorItem> Colors { get; set; }
-        public ICommand DeleteCanvasContent { get; set; }
 
         private int _EllipseJumpingFrequency
         {
@@ -29,33 +25,31 @@ namespace SalmaMusic.MVVM.ViewModels
                 
             }
         }
-        private ColorItem selectedColorItem;
 
-        public ColorItem SelectedColorItem
-        {
-            get { return selectedColorItem; }
-            set
-            {
-                selectedColorItem = value;
-                // You can perform additional logic here if needed
-            }
-        }
+        public int EllipseJumpingFrequency { get; set; } = 0;
 
         public VideoViewModel() 
         {
-            DeleteCanvasContent = new RelayCommand(CanvasContentDeleteCommand);
-            Colors = new List<ColorItem>() { 
-                new ColorItem() { ColorBrush = Brushes.AliceBlue, DisplayName = "AliceBlue" },
-                new ColorItem() { ColorBrush = Brushes.White, DisplayName = "White" },
-                new ColorItem() { ColorBrush = Brushes.Black, DisplayName = "Black" },
-                new ColorItem() { ColorBrush = Brushes.Green, DisplayName = "Green" },
-                new ColorItem() { ColorBrush = Brushes.Blue, DisplayName = "Blue" },
-                new ColorItem() { ColorBrush = Brushes.Yellow, DisplayName = "Yellow" }
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(20);
+            _timer.Tick += UpdateCanvas;
+            //MainSiteViewModel.timer.Tick += (sender, e) => { 
+                
+            //};
+            _timer.Start();
+            _timer.Tick += (sender, e) =>
+            {
+                Console.WriteLine("asd");
             };
         }
-
-        private void CanvasContentDeleteCommand()
+        private void UpdateCanvas(object sender, EventArgs e)
         {
+            EllipseJumpingFrequency++;
+            if(EllipseJumpingFrequency > 300) 
+            {
+                EllipseJumpingFrequency = 0;
+            }
+            OnPropertyChanged(nameof(EllipseJumpingFrequency));
         }
 
         private void OnPropertyChanged(string PropertyName)

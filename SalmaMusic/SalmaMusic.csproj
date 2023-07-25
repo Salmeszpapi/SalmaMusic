@@ -17,9 +17,6 @@
     <None Remove="Assets\Images\pause.png" />
     <None Remove="Assets\Images\previous.png" />
     <None Remove="Assets\play.png" />
-    <None Remove="folder.png" />
-    <None Remove="logo.png" />
-    <None Remove="previous.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="ReactiveUI" Version="19.2.1" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.Data.SQLite.EF6" Version="1.0.118" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
@@ -41,9 +49,6 @@
     <Resource Include="Assets\Images\next.png" />
     <Resource Include="Assets\Images\pause.png" />
     <Resource Include="Assets\Images\play.png" />
-    <Resource Include="folder.png" />
-    <Resource Include="logo.png" />
-    <Resource Include="previous.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,7 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
 
