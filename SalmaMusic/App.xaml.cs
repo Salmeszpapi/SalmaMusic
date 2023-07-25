@@ -1,4 +1,5 @@
-﻿using SalmaMusic.MVVM.Models;
+﻿using SalmaMusic.DbHelper;
+using SalmaMusic.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,6 +20,11 @@ namespace SalmaMusic
             base.OnStartup(e);
             MainSiteModel mainSiteModel = new MainSiteModel();
             mainSiteModel.GetWindow().Show();
+
+            using (var db = new MyDataProvider())
+            {
+                db.Database.EnsureCreated();
+            }
 
         }
     }
