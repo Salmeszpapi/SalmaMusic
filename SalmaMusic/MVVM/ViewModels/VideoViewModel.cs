@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using System.Windows.Media;
 
 namespace SalmaMusic.MVVM.ViewModels
 {
@@ -15,6 +17,8 @@ namespace SalmaMusic.MVVM.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private DispatcherTimer _timer;
+        public List<Brush> ColorPicker { get; set; }
+        public ICommand DeleteCanvasContent { get; set; }
 
         private int _EllipseJumpingFrequency
         {
@@ -26,30 +30,14 @@ namespace SalmaMusic.MVVM.ViewModels
             }
         }
 
-        public int EllipseJumpingFrequency { get; set; } = 0;
-
         public VideoViewModel() 
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(20);
-            _timer.Tick += UpdateCanvas;
-            //MainSiteViewModel.timer.Tick += (sender, e) => { 
-                
-            //};
-            _timer.Start();
-            _timer.Tick += (sender, e) =>
-            {
-                Console.WriteLine("asd");
-            };
+            DeleteCanvasContent = new RelayCommand(CanvasContentDeleteCommand);
+            ColorPicker = new List<Brush> { Brushes.AliceBlue, Brushes.Black, Brushes.Blue, Brushes.BurlyWood };
         }
-        private void UpdateCanvas(object sender, EventArgs e)
+
+        private void CanvasContentDeleteCommand()
         {
-            EllipseJumpingFrequency++;
-            if(EllipseJumpingFrequency > 300) 
-            {
-                EllipseJumpingFrequency = 0;
-            }
-            OnPropertyChanged(nameof(EllipseJumpingFrequency));
         }
 
         private void OnPropertyChanged(string PropertyName)
