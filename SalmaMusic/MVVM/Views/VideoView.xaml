@@ -6,8 +6,18 @@
              xmlns:local="clr-namespace:SalmaMusic.MVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Canvas x:Name="MyCanvas" Background="Black" Height="500" MouseDown="Canvas_MouseMove">
-        <Ellipse Width="200" Height="200" Fill="Blue" Canvas.Left="100" Canvas.Top="{Binding EllipseJumpingFrequency}" />
-        <!-- Add more elements here -->
-    </Canvas>
+    <StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Reset" Command="{Binding DeleteCanvasContent}" Click="Button_Click" Width="100"/>
+            <Button Content="Save" Click="Button_Click_1" Width="100"/>
+            <Button Content="Reset" Width="100"/>
+            <ComboBox x:Name="ColorPicker" ItemsSource="{Binding ColorPicker}"/>
+        </StackPanel>
+
+        <Canvas x:Name="MyCanvas" MouseMove="MyCanvas_MouseMove" Background="Black" Height="500" MouseDown="Canvas_MouseDown">
+            <!--<Ellipse Width="200" Height="200" Fill="Blue" Canvas.Left="100" Canvas.Top="{Binding EllipseJumpingFrequency}" />-->
+            <!-- Add more elements here -->
+        </Canvas>
+    </StackPanel>
+
 </UserControl>
