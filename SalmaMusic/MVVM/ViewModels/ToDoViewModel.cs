@@ -18,7 +18,7 @@ namespace SalmaMusic.MVVM.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
         public ICommand ViewToDoTaskCreated { get; set; }
         public string TaskName { get; set; }
-        public DateTime DateSelected { get; set; } = DateTime.Now;
+        public string DaySelected { get; set; }
         public int HoursSelected { get; set; }
         public int MinsSelected { get; set; }
         public string CommendText { get; set; }

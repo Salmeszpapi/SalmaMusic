@@ -12,6 +12,7 @@ namespace SalmaMusic.DbHelper
     class MyDataProvider : DbContext
     {
         public DbSet<Music> Music { get; set; }
+        public DbSet<TodoItem> ToDoTask { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,6 +25,7 @@ namespace SalmaMusic.DbHelper
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Music>();
+            modelBuilder.Entity<TodoItem>();
         }
     }
 }
