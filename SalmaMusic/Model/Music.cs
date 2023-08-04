@@ -23,7 +23,11 @@ namespace SalmaMusic.Model
         {
             this.Name = name;
             this.Path = path;
-        } 
+        }
+        public Music()
+        {
+            
+        }
 
     }
 }

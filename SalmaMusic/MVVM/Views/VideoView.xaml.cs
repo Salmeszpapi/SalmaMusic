@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using SalmaMusic.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,9 +24,13 @@ namespace SalmaMusic.MVVM.Views
     public partial class VideoView : UserControl
     {
         public ICommand DeleteCanvasContent { get; set; }
+        Ellipse ellipse = new Ellipse();
+        Brush selectedColorBrush;
         public VideoView()
         {
             InitializeComponent();
+            
+
         }
 
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
@@ -35,13 +40,15 @@ namespace SalmaMusic.MVVM.Views
 
         private void MyCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            //ColorPicker.SelectedItem = ColorPicker.Items[0];
+            //ColorPicker.Text = ColorPicker.Items[0].ToString();
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 Point mousePosition = e.GetPosition(MyCanvas);
-                Ellipse ellipse = new Ellipse();
+                ellipse = new Ellipse();
                 ellipse.Width = 10;
                 ellipse.Height = 10;
-                ellipse.Fill = (Brush)ColorPicker.SelectedItem;
+                ellipse.Fill = selectedColorBrush;
                 Canvas.SetLeft(ellipse, mousePosition.X); // X-coordinate of the top-left corner of the ellipse
                 Canvas.SetTop(ellipse, mousePosition.Y);
                 MyCanvas.Children.Add(ellipse);
@@ -67,6 +74,18 @@ namespace SalmaMusic.MVVM.Views
                 {
                     encoder.Save(fileStream);
                 }
+            }
+
+        }
+
+        private void ColorPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ColorPicker.SelectedItem is ColorItem selectedColorItem)
+            {
+                // Access the selected ColorItem and its properties
+                selectedColorBrush = selectedColorItem.ColorBrush;
+                string selectedColorDisplayName = selectedColorItem.DisplayName;
+                ellipse.Fill = selectedColorBrush;
             }
         }
     }

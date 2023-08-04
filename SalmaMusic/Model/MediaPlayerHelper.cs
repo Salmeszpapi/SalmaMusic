@@ -37,10 +37,6 @@ namespace SalmaMusic.Model
             OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true, Filter = "Audio Wav (*.wav)|*.wav" };
             openFileDialog.ShowDialog();
             MusicMaker(FormatConverter(music));
-
-
-
-
         }
 
         private void MusicMaker(string music)
