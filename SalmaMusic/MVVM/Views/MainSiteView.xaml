@@ -132,6 +132,8 @@
                      Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
             <Button Name="VideoMenuButton" Command="{Binding VideoContentPage}" Margin="5" Content="Video" BorderBrush="Brown" BorderThickness="0" 
                      Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
+            <Button Name="ToDoMenuButton" Command="{Binding ToDoContentPage}" Margin="5" Content="ToDo" BorderBrush="Brown" BorderThickness="0" 
+                     Background="Transparent" FontSize="22" FontWeight="bold" PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" />
         </StackPanel>
         <StackPanel Name="PlayerField" Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="0,20,0,0" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,-5" >

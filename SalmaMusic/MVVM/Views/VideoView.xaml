@@ -11,7 +11,7 @@
             <Button Content="Reset" Command="{Binding DeleteCanvasContent}" Click="Button_Click" Width="100"/>
             <Button Content="Save" Click="Button_Click_1" Width="100"/>
             <Button Content="Reset" Width="100"/>
-            <ComboBox x:Name="ColorPicker" ItemsSource="{Binding ColorPicker}"/>
+            <ComboBox x:Name="ColorPicker" SelectedItem="{Binding SelectedColorItem}" SelectionChanged="ColorPicker_SelectionChanged" ItemsSource="{Binding Colors}" DisplayMemberPath="DisplayName"/>
         </StackPanel>
 
         <Canvas x:Name="MyCanvas" MouseMove="MyCanvas_MouseMove" Background="Black" Height="500" MouseDown="Canvas_MouseDown">

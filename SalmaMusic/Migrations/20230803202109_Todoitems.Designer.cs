@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalmaMusic.DbHelper;
 
@@ -10,9 +11,11 @@ using SalmaMusic.DbHelper;
 namespace SalmaMusic.Migrations
 {
     [DbContext(typeof(MyDataProvider))]
-    partial class MyDataProviderModelSnapshot : ModelSnapshot
+    [Migration("20230803202109_Todoitems")]
+    partial class Todoitems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.9");

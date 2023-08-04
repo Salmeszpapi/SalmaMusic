@@ -43,6 +43,7 @@ namespace SalmaMusic.MVVM.ViewModels
         public ICommand ExploreContentPage { get; set; }
         public ICommand EditorContentPage { get; set; }
         public ICommand VideoContentPage { get; set; }
+        public ICommand ToDoContentPage { get; set; }
         public ICommand GearButtonIsPressed { get; set; }
 
 
@@ -68,6 +69,7 @@ namespace SalmaMusic.MVVM.ViewModels
             ExploreContentPage = new RelayCommand(SwitchToExploreContent);
             EditorContentPage = new RelayCommand(SwitchToEditorPage);
             VideoContentPage = new RelayCommand(VideoToEditorPage);
+            ToDoContentPage = new RelayCommand(ToDoPage);
             menuButtonEventClicked += MainSiteViewModel_menuButtonEventClicked;
             var imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("C:\\Users\\salma\\source\\repos\\SalmaMusic\\SalmaMusic\\Assets\\Images\\play.png"));
@@ -93,6 +95,18 @@ namespace SalmaMusic.MVVM.ViewModels
             {
                 SkippMusicButtonClicked();
             };
+
+
+        }
+
+        private void ToDoPage()
+        {
+            ToDoModel videoModel = (ToDoModel)WorkFlowManager.GetUsercontrol(nameof(ToDoModel));
+            if (videoModel is null)
+            {
+                videoModel = new ToDoModel();
+            }
+            MusicContainer = videoModel.GetView();
         }
 
         private void GearClicked()
