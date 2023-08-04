@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TestDatabaseSchematic"
+    targetNamespace="http://tempuri.org/TestDatabaseSchematic.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/TestDatabaseSchematic.xsd"
+    xmlns:mstns="http://tempuri.org/TestDatabaseSchematic.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+	<ArrayOfMusic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<Music>
+			<Id>2</Id>
+			<Name>01-novah-a_savage.wav</Name>
+			<Path>D:\musics\01-novah-a_savage.wav</Path>
+		</Music>
+		<Music>
+			<Id>3</Id>
+			<Name>02-alex_farell-save_me.wav</Name>
+			<Path>D:\musics\02-alex_farell-save_me.wav</Path>
+		</Music>
+		<Music>
+			<Id>4</Id>
+			<Name>03-byorn-underground_hour.wav</Name>
+			<Path>D:\musics\03-byorn-underground_hour.wav</Path>
+		</Music>
+		<Music>
+			<Id>5</Id>
+			<Name>04-nikki-toward_the_sun.wav</Name>
+			<Path>D:\musics\04-nikki-toward_the_sun.wav</Path>
+		</Music>
+		<Music>
+			<Id>6</Id>
+			<Name>05-pisapia-sky_walker.wav</Name>
+			<Path>D:\musics\05-pisapia-sky_walker.wav</Path>
+		</Music>
+		<Music>
+			<Id>7</Id>
+			<Name>06-newton-imminent.wav</Name>
+			<Path>D:\musics\06-newton-imminent.wav</Path>
+		</Music>
+		<Music>
+			<Id>8</Id>
+			<Name>punanny - Copy (2).wav</Name>
+			<Path>D:\musics\punanny - Copy (2).wav</Path>
+		</Music>
+		<Music>
+			<Id>9</Id>
+			<Name>punanny - Copy (3).wav</Name>
+			<Path>D:\musics\punanny - Copy (3).wav</Path>
+		</Music>
+		<Music>
+			<Id>10</Id>
+			<Name>punanny - Copy (4).wav</Name>
+			<Path>D:\musics\punanny - Copy (4).wav</Path>
+		</Music>
+		<Music>
+			<Id>11</Id>
+			<Name>punanny - Copy (5).wav</Name>
+			<Path>D:\musics\punanny - Copy (5).wav</Path>
+		</Music>
+		<Music>
+			<Id>12</Id>
+			<Name>punanny - Copy (6).wav</Name>
+			<Path>D:\musics\punanny - Copy (6).wav</Path>
+		</Music>
+		<Music>
+			<Id>13</Id>
+			<Name>punanny - Copy (7).wav</Name>
+			<Path>D:\musics\punanny - Copy (7).wav</Path>
+		</Music>
+		<Music>
+			<Id>14</Id>
+			<Name>punanny - Copy.wav</Name>
+			<Path>D:\musics\punanny - Copy.wav</Path>
+		</Music>
+		<Music>
+			<Id>15</Id>
+			<Name>punanny.wav</Name>
+			<Path>D:\musics\punanny.wav</Path>
+		</Music>
+		<Music>
+			<Id>16</Id>
+			<Name>02-alex_farell-save_me.wav</Name>
+			<Path>D:\musics\02-alex_farell-save_me.wav</Path>
+		</Music>
+		<Music>
+			<Id>17</Id>
+			<Name>03-byorn-underground_hour.wav</Name>
+			<Path>D:\musics\03-byorn-underground_hour.wav</Path>
+		</Music>
+		<Music>
+			<Id>18</Id>
+			<Name>04-nikki-toward_the_sun.wav</Name>
+			<Path>D:\musics\04-nikki-toward_the_sun.wav</Path>
+		</Music>
+		<Music>
+			<Id>19</Id>
+			<Name>05-pisapia-sky_walker.wav</Name>
+			<Path>D:\musics\05-pisapia-sky_walker.wav</Path>
+		</Music>
+		<Music>
+			<Id>20</Id>
+			<Name>06-newton-imminent.wav</Name>
+			<Path>D:\musics\06-newton-imminent.wav</Path>
+		</Music>
+		<Music>
+			<Id>21</Id>
+			<Name>04-nikki-toward_the_sun.wav</Name>
+			<Path>D:\musics\04-nikki-toward_the_sun.wav</Path>
+		</Music>
+		<Music>
+			<Id>22</Id>
+			<Name>05-pisapia-sky_walker.wav</Name>
+			<Path>D:\musics\05-pisapia-sky_walker.wav</Path>
+		</Music>
+		<Music>
+			<Id>23</Id>
+			<Name>06-newton-imminent.wav</Name>
+			<Path>D:\musics\06-newton-imminent.wav</Path>
+		</Music>
+		<Music>
+			<Id>24</Id>
+			<Name>punanny - Copy (2).wav</Name>
+			<Path>D:\musics\punanny - Copy (2).wav</Path>
+		</Music>
+		<Music>
+			<Id>25</Id>
+			<Name>punanny - Copy (3).wav</Name>
+			<Path>D:\musics\punanny - Copy (3).wav</Path>
+		</Music>
+		<Music>
+			<Id>26</Id>
+			<Name>02-alex_farell-save_me.wav</Name>
+			<Path>D:\musics\02-alex_farell-save_me.wav</Path>
+		</Music>
+		<Music>
+			<Id>27</Id>
+			<Name>03-byorn-underground_hour.wav</Name>
+			<Path>D:\musics\03-byorn-underground_hour.wav</Path>
+		</Music>
+		<Music>
+			<Id>28</Id>
+			<Name>04-nikki-toward_the_sun.wav</Name>
+			<Path>D:\musics\04-nikki-toward_the_sun.wav</Path>
+		</Music>
+		<Music>
+			<Id>29</Id>
+			<Name>05-pisapia-sky_walker.wav</Name>
+			<Path>D:\musics\05-pisapia-sky_walker.wav</Path>
+		</Music>
+		<Music>
+			<Id>30</Id>
+			<Name>06-newton-imminent.wav</Name>
+			<Path>D:\musics\06-newton-imminent.wav</Path>
+		</Music>
+		<Music>
+			<Id>31</Id>
+			<Name>punanny - Copy (2).wav</Name>
+			<Path>D:\musics\punanny - Copy (2).wav</Path>
+		</Music>
+		<Music>
+			<Id>32</Id>
+			<Name>punanny - Copy (3).wav</Name>
+			<Path>D:\musics\punanny - Copy (3).wav</Path>
+		</Music>
+		<Music>
+			<Id>33</Id>
+			<Name>punanny - Copy (4).wav</Name>
+			<Path>D:\musics\punanny - Copy (4).wav</Path>
+		</Music>
+		<Music>
+			<Id>34</Id>
+			<Name>punanny - Copy (5).wav</Name>
+			<Path>D:\musics\punanny - Copy (5).wav</Path>
+		</Music>
+		<Music>
+			<Id>35</Id>
+			<Name>punanny - Copy (6).wav</Name>
+			<Path>D:\musics\punanny - Copy (6).wav</Path>
+		</Music>
+		<Music>
+			<Id>36</Id>
+			<Name>punanny - Copy (7).wav</Name>
+			<Path>D:\musics\punanny - Copy (7).wav</Path>
+		</Music>
+	</ArrayOfMusic>
+</xs:schema>
