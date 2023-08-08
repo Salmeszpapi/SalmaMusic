@@ -23,15 +23,15 @@ namespace SalmaMusic.MVVM.Views
         readonly string[] daysOfWeek = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
         readonly string[] Hours = new string[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" };
         List<string> Mins = new List<string>();
+        private ShowCommentView showCommentView;
         public ToDoView()
         {
             InitializeComponent();
             MinGenerator();
             TasksButton.Background = Brushes.White;
             PreviousButton = TasksButton;
-            daysOfWeek.ToList().ForEach(day => DaysBox.Items.Add(day));
+            //daysOfWeek.ToList().ForEach(day => DaysBox.Items.Add(day));
             Hours.ToList().ForEach(hour => HourBox.Items.Add(hour));
-            DaysBox.SelectedIndex = 0;
 
         }
 
@@ -82,6 +82,21 @@ namespace SalmaMusic.MVVM.Views
                     break;
             }
             PreviousButton = button;
+        }
+
+        private void TextBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var a = sender as TextBox;
+            Point mousePosition = e.GetPosition(this);
+            showCommentView = new ShowCommentView(a.Text);
+            showCommentView.Left = mousePosition.X+10;
+            showCommentView.Top = mousePosition.Y+10;
+            showCommentView.Show();
+        }
+
+        private void TextBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            showCommentView.Hide();
         }
     }
 }
