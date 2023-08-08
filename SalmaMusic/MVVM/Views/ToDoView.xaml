@@ -18,7 +18,7 @@
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="Text" Value="Black"/>
             <Setter Property="SelectionTextBrush" Value="green"/>
-            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
@@ -58,10 +58,34 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Task Name" DisplayMemberBinding="{Binding TaskName}" Width="100"/>
-                        <GridViewColumn Header="Active" DisplayMemberBinding="{Binding Active}" Width="100"/>
-                        <GridViewColumn Header="Day Selected" DisplayMemberBinding="{Binding CreatedTask}" Width="100"/>
-                        <GridViewColumn Header="Finished" DisplayMemberBinding="{Binding Finished}" Width="100"/>
-                        <GridViewColumn Header="Comment Text" DisplayMemberBinding="{Binding Comment}" Width="100"/>
+                        <GridViewColumn Header="Active" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Margin="22" IsChecked="{Binding Active}" IsEnabled="True" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Event start" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding CreatedTask}" IsEnabled="True" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Finished" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding FinishedTime}" IsEnabled="True" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Comment Text" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Comment}" MouseEnter="TextBox_MouseEnter" MouseLeave="TextBox_MouseLeave" IsEnabled="True" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -71,8 +95,7 @@
                 <Label FontSize="16" Content="Task name: "/>
                 <TextBox Width="100" Text="{Binding TaskName}" />
                 <Label  FontSize="16" Content="Select Day: "/>
-                <ComboBox x:Name="DaysBox" FontSize="18" SelectedItem="{Binding DaySelected}">
-                </ComboBox>
+                <DatePicker x:Name="Datepicker" SelectedDate="{Binding DateSelected}" IsEnabled="True" />
                 <Label FontSize="16" Content="Hour: "/>
                 <ComboBox x:Name="HourBox" FontSize="18" Text="{Binding HoursSelected}">
                 </ComboBox>
