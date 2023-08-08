@@ -15,7 +15,7 @@ namespace SalmaMusic.Model
         public bool Finished { get; set; }
         public bool Active { get; set; }
         public DateTime CreatedTask { get; set; }
-        public DateTime FinishedTask { get; set; }
+        public DateTime FinishedTime { get; set; }
         public string? Comment { get; set; }
 
         public TodoItem()
