@@ -33,7 +33,6 @@ namespace SalmaMusic.View
     public partial class MainSiteView : Window
     {
         private Button CurrentMenuButton { get; set; }
-
         public MainSiteView()
         {
             InitializeComponent();

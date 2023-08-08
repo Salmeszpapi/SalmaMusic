@@ -54,7 +54,7 @@ namespace SalmaMusic.Migrations
                     b.Property<bool>("Finished")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("FinishedTask")
+                    b.Property<DateTime>("FinishedTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TaskName")
