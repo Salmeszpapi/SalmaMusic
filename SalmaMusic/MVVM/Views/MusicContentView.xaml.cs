@@ -15,14 +15,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalmaMusic.MVVM.Views
+namespace SalmaMusic.View
 {
     /// <summary>
-    /// Interaction logic for EditorView.xaml
+    /// Interaction logic for MusicContentView.xaml
     /// </summary>
-    public partial class EditorView : UserControl
+    public partial class MusicContentView : UserControl
     {
-        public EditorView()
+        public MusicContentView()
         {
             InitializeComponent();
             MainSiteViewModel.MusicSkipped += ChangeSelectedMusicDesign;
